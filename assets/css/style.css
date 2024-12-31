@@ -9,16 +9,16 @@ Version: 1.0
 03. Global Css
 04.Header CSS
 05.banner CSS
-06.Service menu 
+06.Service menu
 07. Our story
 08. about section
 09. Services section
 10. logo section
 11. feed back section
 12. feed back section
-13. faq section 
-14. gallery section 
-15. footer section 
+13. faq section
+14. gallery section
+15. footer section
 16. breadcrumb section
 17. Services section
 18. blog section
@@ -39,13 +39,13 @@ Version: 1.0
 33. work deatails card
 34. skin care banner section
 35.skin care section title
-36. product section 
+36. product section
 37. our company section
 38.skin care offer section
 39.skin care offer section
 40.skin care offer section
-41.Newsletter section 
-42. skin protection section 
+41.Newsletter section
+42. skin protection section
 43. breadcrumb section
 44. Our Story page step section
 45. facial treatments section
@@ -63,7 +63,7 @@ Version: 1.0
 
 
 /*===========================
-     01.COMMON CSS 
+     01.COMMON CSS
 ===========================*/
 @import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 :root {
@@ -3204,7 +3204,7 @@ header.skin-care .main-menu ul > li ul.sub-menu div > li:hover .dropdown-icon2 {
 }
 header.skin-care .main-menu ul > li ul.sub-menu div > li.active > a {
   color: var(--white-color);
-  
+
 }
 header.skin-care .main-menu ul > li ul.sub-menu div > li.active .dropdown-icon {
   color: var(--white-color);
@@ -5222,7 +5222,7 @@ header.nail.booking.sticky {
 }
 
 /*=====================================
-  06.Service menu 
+  06.Service menu
 ========================================*/
 .section-title {
   text-align: center;
@@ -5482,7 +5482,7 @@ header.nail.booking.sticky {
 }
 
 /*=====================================
-  07. Our story 
+  07. Our story
 ========================================*/
 .our-story-section .story-content {
   max-width: 600px;
@@ -6765,7 +6765,7 @@ header.nail.booking.sticky {
 }
 
 /*=====================================
-  13. faq section 
+  13. faq section
 ========================================*/
 .faq-section .faq-area .section-title-and-filter {
   display: flex;
@@ -6989,7 +6989,7 @@ header.nail.booking.sticky {
 }
 
 /*=====================================
-  14. gallery section 
+  14. gallery section
 ========================================*/
 .gallery-section .sub-title h6 {
   gap: 10px;
@@ -7074,7 +7074,7 @@ header.nail.booking.sticky {
 }
 
 /*=====================================
-  15. footer section 
+  15. footer section
 ========================================*/
 .footer-section {
   background: #030e29f0;
@@ -8386,7 +8386,7 @@ header.nail.booking.sticky {
   font-family: var(--font-eb-garamond);
 }
 .product-details-page .product-details-content.style-2 .product-info-list li {
-  
+
   font-weight: 400;
     letter-spacing: 0.4px;
 }
@@ -8536,7 +8536,7 @@ header.nail.booking.sticky {
   list-style: none;
 }
 .product-details-page .product-details-content .product-info-list li {
-  
+
   font-size: 14px;
   font-weight: 600;
   line-height: 18.23px;
@@ -11671,6 +11671,7 @@ header.nail.booking.sticky {
   transition: 0.5s;
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 .spa-product-card .spa-product-content .star {
   padding: 0;
@@ -14475,7 +14476,7 @@ header.nail.booking.sticky {
 }
 
 /*=====================================
-  36. product section 
+  36. product section
 ========================================*/
 .product-view-modal .modal-dialog {
   animation: zoom-In-effect 1s;
@@ -15374,7 +15375,7 @@ header.nail.booking.sticky {
 }
 
 /*=====================================
-  41.Newsletter section 
+  41.Newsletter section
 ========================================*/
 .newsletter-section {
   background: #F8F8F8;
@@ -15512,7 +15513,7 @@ header.nail.booking.sticky {
 }
 
 /*=====================================
-  42. skin protection section 
+  42. skin protection section
 ========================================*/
 .skin-protection-section .skin-care-section-title p {
   font-family: var(--font-dm-sans);
@@ -15617,7 +15618,7 @@ header.nail.booking.sticky {
 ========================================*/
 .skin-care-breadcrumb-section {
   background-color: #F5F1E9;
-  padding: 10px 0px; 
+  padding: 10px 0px;
   position: relative;
 }
 @media (max-width: 1199px) {
@@ -17036,7 +17037,7 @@ header.nail.booking.sticky {
     text-align: center;
     border: 0px;
     background: #e4e4e4;
-} 
+}
 
 
 
@@ -17139,7 +17140,7 @@ input[type="range"]::-webkit-slider-thumb {
   width: 200px;
   border: none;
   text-align: center;
-  transition: transform 0.5s ease; 
+  transition: transform 0.5s ease;
 }
 .card:hover{
   cursor: pointer;

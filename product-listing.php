@@ -60,32 +60,32 @@ $stmt = $conn->prepare($sql);
 
 if (!empty($values)) {
     $types = str_repeat('s', count($values));
-     
+
     // Adjust the data type for price parameters if needed.
     $price_param_count = 0;
-    if($params['price_min'] != ''){
+    if ($params['price_min'] != '') {
         $price_param_count++;
     }
-    if($params['price_max'] != ''){
+    if ($params['price_max'] != '') {
         $price_param_count++;
     }
 
     if ($price_param_count > 0) {
 
-         $types_array = str_split($types);
-         $index_min_price = array_search( ($params['price_min'] != ''), $values, true );
-         if($index_min_price !== false){
+        $types_array = str_split($types);
+        $index_min_price = array_search(($params['price_min'] != ''), $values, true);
+        if ($index_min_price !== false) {
             $types_array[$index_min_price] = 'd';
-         }
-         $index_max_price = array_search( ($params['price_max'] != ''), $values, true );
-         if($index_max_price !== false){
+        }
+        $index_max_price = array_search(($params['price_max'] != ''), $values, true);
+        if ($index_max_price !== false) {
             $types_array[$index_max_price] = 'd';
-         }
+        }
 
-        $types =  implode('', $types_array);
+        $types = implode('', $types_array);
     }
-  
-    
+
+
     $stmt->bind_param($types, ...$values);
 }
 
@@ -105,23 +105,6 @@ if ($result->num_rows > 0) {
 
 $stmt->close();
 ?>
-<!-- breadcrumb section strats here -->
-<div class="skin-care-breadcrumb-section">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12 d-flex justify-content-center">
-                <div class="banner-content text-center">
-                    <h1>PRODUCT</h1>
-                    <ul class="breadcrumb-list">
-                        <li><a href="index.html">Home</a></li>
-                        <li>PRODUCT</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- breadcrumb section ends here -->
 
 <div class="modal product-view-modal" id="product-view">
     <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -225,10 +208,12 @@ $stmt->close();
         </div>
     </div>
 </div>
-<div class="product-page pt-120 mb-120">
+
+
+<div class="product-page pt-100 mb-120">
     <div class="container">
         <div class="row g-xl-4 gy-5">
-            <div class="col-xl-3 col-lg-4 order-lg-1 order-2">
+            <div class="col-xl-3 col-lg-4 order-lg-1 order-1">
                 <div class="shop-sidebar wow animate fadeInLeft" data-wow-delay="200ms" data-wow-duration="1500ms">
                     <div class="single-widgets widget_search mb-25">
                         <form>
@@ -244,7 +229,7 @@ $stmt->close();
                             </div>
                         </form>
                     </div>
-                    <div class="main">
+                    <div class="main d-none d-lg-block">
                         <div class="price-input-container">
                             <div class="price-input">
                                 <div class="price-field">
@@ -270,39 +255,91 @@ $stmt->close();
                                 value="<?php echo isset($_GET['price_max']) ? $_GET['price_max'] : 0; ?>" step="1">
                         </div>
                     </div>
-                    <div class="single-widgets style-2">
-                        <div class="widget-title">
-                            <h5>Types:</h5>
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileFilterSidebar" aria-labelledby="mobileFilterSidebarLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="mobileFilterSidebarLabel">Filter Products</h5>
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
-                        <p class="wp-block-tag-cloud">
-                            <?php
-                            $sql = "SELECT * FROM SkinTypes";
-                            $stmt = $conn->prepare($sql);
-                            $stmt->execute();
+                        <div class="offcanvas-body">
+                            <div class="single-widgets style-2">
+                                <div class="widget-title">
+                                    <h5>Skin Types:</h5>
+                                </div>
+                                <p class="wp-block-tag-cloud">
+                                    <?php
+                                    $sql = "SELECT * FROM SkinTypes";
+                                    $stmt = $conn->prepare($sql);
+                                    $stmt->execute();
 
-                            $result = $stmt->get_result();
-                            while ($row = $result->fetch_assoc()) {
-                                echo '<a href="product-listing.php?skin-type=' . $row['skin_type_name'] . '" class="skin-type-link mb-2">' . htmlspecialchars($row['skin_type_name']) . ',</a>';
-                            }
-                            ?>
-                        </p>
+                                    $result = $stmt->get_result();
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo '<a href="product-listing.php?skin-type=' . $row['skin_type_name'] . '" class="skin-type-link mb-2">' . htmlspecialchars($row['skin_type_name']) . ',</a>';
+                                    }
+                                    ?>
+                                </p>
+                            </div>
+                            <div class="single-widgets style-2">
+                                <div class="widget-title">
+                                    <h5>Product Types:</h5>
+                                </div>
+                                <p class="wp-block-tag-cloud">
+                                    <?php
+                                    $sql = "SELECT * FROM ProductType";
+                                    $stmt = $conn->prepare($sql);
+                                    $stmt->execute();
+
+                                    $result = $stmt->get_result();
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo '<a href="product-listing.php?type=' . $row['product_type_name'] . '">' . htmlspecialchars($row['product_type_name']) . ',</a>';
+                                    }
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="single-widgets style-2">
-                        <div class="widget-title">
-                            <h5>Types:</h5>
-                        </div>
-                        <p class="wp-block-tag-cloud">
-                            <?php
-                            $sql = "SELECT * FROM ProductType"; // Assuming you have a 'Tags' table
-                            $stmt = $conn->prepare($sql);
-                            $stmt->execute();
 
-                            $result = $stmt->get_result();
-                            while ($row = $result->fetch_assoc()) {
-                                echo '<a href="product-listing.php?type=' . $row['product_type_name'] . '">' . htmlspecialchars($row['product_type_name']) . ',</a>';
-                            }
-                            ?>
-                        </p>
+                    <!-- Button to trigger the offcanvas (for mobile/tablet) -->
+                    <button class="btn btn-primary d-lg-none mb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileFilterSidebar" aria-controls="mobileFilterSidebar">
+                        Filter
+                    </button>
+
+
+                    <!-- Desktop Filters (Below Search) -->
+                    <div class="desktop-filter-container d-none d-lg-block">
+                        <div class="single-widgets style-2">
+                            <div class="widget-title">
+                                <h5>Types:</h5>
+                            </div>
+                            <p class="wp-block-tag-cloud ">
+                                <?php
+                                $sql = "SELECT * FROM SkinTypes";
+                                $stmt = $conn->prepare($sql);
+                                $stmt->execute();
+
+                                $result = $stmt->get_result();
+                                while ($row = $result->fetch_assoc()) {
+                                    echo '<a href="product-listing.php?skin-type=' . $row['skin_type_name'] . '" class="skin-type-link mb-2">' . htmlspecialchars($row['skin_type_name']) . ',</a>';
+                                }
+                                ?>
+                            </p>
+                        </div>
+                        <div class="single-widgets style-2">
+                            <div class="widget-title">
+                                <h5>Types:</h5>
+                            </div>
+                            <p class="wp-block-tag-cloud">
+                                <?php
+                                $sql = "SELECT * FROM ProductType"; // Assuming you have a 'Tags' table
+                                $stmt = $conn->prepare($sql);
+                                $stmt->execute();
+
+                                $result = $stmt->get_result();
+                                while ($row = $result->fetch_assoc()) {
+                                    echo '<a href="product-listing.php?type=' . $row['product_type_name'] . '">' . htmlspecialchars($row['product_type_name']) . ',</a>';
+                                }
+                                ?>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -328,9 +365,19 @@ $stmt->close();
                                 <div class="spa-product-card hover-img">
                                     <div class="spa-product-image" style="
     width: 100%;
-    height: 300px;>
-                                        <a href="product-details.php">
-                                            <img src="<?php echo isset($product['MainPathImage']) && $product['MainPathImage'] ? 'crm/' . $product['MainPathImage'] : 'assets/image/skin-care/default_product_image.jpg'; ?>" alt="Product Image">
+    height: 300px;
+
+    @media screen and (-webkit-min-device-pixel-ratio:0) and (orientation: portrait),
+    screen and (min-device-width:320px) and (max-device-width: 768px) and (-webkit-min-device-pixel-ratio: 0) {
+      height: 350px;
+     }
+
+   ">
+                                        <a href=" product-details.php">
+                                            <img src="<?php echo isset($product['MainPathImage']) && $product['MainPathImage'] ? 'crm/' . $product['MainPathImage'] : 'assets/image/skin-care/default_product_image.jpg'; ?>"
+                                                alt="Product Image">
+                                            <img src="<?php echo isset($product['MainPathImage']) && $product['MainPathImage'] ? 'crm/' . $product['MainPathImage'] : 'assets/image/skin-care/default_product_image.jpg'; ?>"
+                                                alt="Product Image">
                                         </a>
                                         <!-- <div class="view-and-cart-area">
                                             <ul>
@@ -370,6 +417,9 @@ $stmt->close();
             </div>
         </div>
     </div>
+</div>
+<div class="filter-button mobile-menu-btn">
+    <span>1234</span>
 </div>
 
 <script>
@@ -412,4 +462,4 @@ $stmt->close();
 
 <?php
 include_once("footer.php")
-    ?>
+?>
