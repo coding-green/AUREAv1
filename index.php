@@ -4,7 +4,7 @@ include_once('function.php');
 ?>
 <!-- Banner section strats here -->
 <div class="skin-care-banner-section">
-    
+
     <div class="swiper banner-swiper-slide">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -88,7 +88,7 @@ include_once('function.php');
     <h2 style="justify-content:center;display:flex;">Shop by Skin Concern</h2>
     <div class="container">
         <div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
-            
+
             <?php
 $sql = "SELECT skin_concern_id,concern_name FROM SkinConcerns";
 $result = $conn->query($sql);
@@ -101,10 +101,10 @@ if ($result->num_rows > 0) {
         echo '<h5 class="card-title">' . $concern_name . '</h5>';
         echo '</div>';
     }
-} 
+}
 ?>
-            
-           
+
+
         </div>
     </div>
 
@@ -158,7 +158,7 @@ if ($result->num_rows > 0) {
                             ?>
                             <div class="swiper-slide" style="cursor: pointer;">
                                 <div class="product-card-section">
-                                    <div class="product-image"
+                                    <div class="product-image" id="product-image-slider"
                                         onclick='window.location.href="product-details.php?id=<?php echo $row["product_id"]; ?>"'>
                                         <img src="<?php echo isset($row['MainPathImage']) && $row['MainPathImage'] ? 'crm/' . $row['MainPathImage'] : 'assets/image/skin-care/default_product_image.jpg'; ?>" alt="Product Image">
                                     </div>
@@ -714,7 +714,7 @@ if ($result->num_rows > 0) {
         </div>
     </div>
 </div>
-<div class="container d-flex flex-row justify-content-center gap-4">
+<div id="feature-container" class="container d-flex flex-row justify-content-center gap-4">
     <div class="feature-card">
         <div class="feature-icon"><svg fill="#000000" height="30px" width="30px" version="1.1" id="Layer_1"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
@@ -764,7 +764,7 @@ if ($result->num_rows > 0) {
 
 <!--reel start-->
 
-<div class="skin-care-testimonials-section">
+<div class="skin-care-testimonials-section" id="footer-reel">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 position-relative pt-30">
@@ -778,7 +778,7 @@ if ($result->num_rows > 0) {
                         $result = $stmt->get_result();
                         $slideIndex = 1; // Initialize slide counter
                         $totalSlides = $result->num_rows; // Get total number of slides
-                        
+
                         while ($row = $result->fetch_assoc()) {
                             ?>
                             <div class="swiper-slide" role="group"

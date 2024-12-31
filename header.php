@@ -1,4 +1,7 @@
 <?php
+// $page = $_SERVER['PHP_SELF'];
+// $sec = "60";
+
 session_start();
 include_once("config.php");
 if (isset($_SESSION["email"])) {
@@ -25,6 +28,7 @@ if (isset($_SESSION["id"])) {
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="<?php echo $sec?>;URL='<?php echo $page?>'">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- swiper link -->
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
