@@ -60,32 +60,32 @@ $stmt = $conn->prepare($sql);
 
 if (!empty($values)) {
     $types = str_repeat('s', count($values));
-
+     
     // Adjust the data type for price parameters if needed.
     $price_param_count = 0;
-    if ($params['price_min'] != '') {
+    if($params['price_min'] != ''){
         $price_param_count++;
     }
-    if ($params['price_max'] != '') {
+    if($params['price_max'] != ''){
         $price_param_count++;
     }
 
     if ($price_param_count > 0) {
 
-        $types_array = str_split($types);
-        $index_min_price = array_search(($params['price_min'] != ''), $values, true);
-        if ($index_min_price !== false) {
+         $types_array = str_split($types);
+         $index_min_price = array_search( ($params['price_min'] != ''), $values, true );
+         if($index_min_price !== false){
             $types_array[$index_min_price] = 'd';
-        }
-        $index_max_price = array_search(($params['price_max'] != ''), $values, true);
-        if ($index_max_price !== false) {
+         }
+         $index_max_price = array_search( ($params['price_max'] != ''), $values, true );
+         if($index_max_price !== false){
             $types_array[$index_max_price] = 'd';
-        }
+         }
 
-        $types = implode('', $types_array);
+        $types =  implode('', $types_array);
     }
-
-
+  
+    
     $stmt->bind_param($types, ...$values);
 }
 
@@ -105,6 +105,23 @@ if ($result->num_rows > 0) {
 
 $stmt->close();
 ?>
+<!-- breadcrumb section strats here -->
+<div class="skin-care-breadcrumb-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <div class="banner-content text-center">
+                    <h1>PRODUCT</h1>
+                    <ul class="breadcrumb-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li>PRODUCT</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb section ends here -->
 
 <div class="modal product-view-modal" id="product-view">
     <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -208,19 +225,28 @@ $stmt->close();
         </div>
     </div>
 </div>
-
-
-<div class="product-page pt-100 mb-120">
+<div class="product-page pt-20 mb-60">
     <div class="container">
         <div class="row g-xl-4 gy-5">
-            <div class="col-xl-3 col-lg-4 order-lg-1 order-1">
+            <div class="col-xl-3 col-lg-4 order-lg-1 order-2 mobile-shop-menu" style="height: fit-content;position: sticky; top: 80px;
+">
                 <div class="shop-sidebar wow animate fadeInLeft" data-wow-delay="200ms" data-wow-duration="1500ms">
-                    <div class="single-widgets widget_search mb-25">
+                    <div class="single-widgets widget_search mb-25" style="
+    margin-bottom: 10px;
+">
                         <form>
                             <div class="wp-block-search__inside-wrapper ">
                                 <input type="search" id="wp-block-search__input-1" class="wp-block-search__input"
-                                    name="name" value="" placeholder="Search Product" required="">
-                                <button type="submit" class="wp-block-search__button">
+                                    name="name" value="" placeholder="Search Product" required="" style="
+    height: 40px;
+    border-bottom-left-radius: 14px;
+    border-top-left-radius: 14px;
+">
+                                <button type="submit" class="wp-block-search__button" style="
+    height: 40px;
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+">
                                     <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M11.7425 10.3418C12.7107 9.0205 13.1444 7.38236 12.9567 5.75508C12.769 4.1278 11.9739 2.63139 10.7303 1.56522C9.48666 0.49905 7.88635 -0.0582469 6.2495 0.0048239C4.61265 0.0678947 3.05997 0.746681 1.90209 1.90538C0.744221 3.06409 0.0665459 4.61725 0.00464636 6.25415C-0.0572531 7.89104 0.501188 9.49095 1.56825 10.7338C2.63531 11.9766 4.13229 12.7707 5.7597 12.9572C7.38711 13.1438 9.02494 12.7089 10.3455 11.7397H10.3445C10.3745 11.7797 10.4065 11.8177 10.4425 11.8547L14.2924 15.7046C14.4799 15.8922 14.7342 15.9977 14.9995 15.9977C15.2647 15.9978 15.5192 15.8926 15.7068 15.7051C15.8944 15.5176 15.9999 15.2632 16 14.9979C16.0001 14.7327 15.8948 14.4782 15.7073 14.2906L11.8575 10.4408C11.8217 10.4046 11.7833 10.3711 11.7425 10.3408V10.3418ZM12.0004 6.4979C12.0004 7.22015 11.8582 7.93532 11.5818 8.60258C11.3054 9.26985 10.9003 9.87614 10.3896 10.3868C9.87889 10.8975 9.2726 11.3027 8.60533 11.5791C7.93807 11.8554 7.2229 11.9977 6.50065 11.9977C5.77841 11.9977 5.06324 11.8554 4.39597 11.5791C3.72871 11.3027 3.12242 10.8975 2.61171 10.3868C2.10101 9.87614 1.6959 9.26985 1.41951 8.60258C1.14312 7.93532 1.00086 7.22015 1.00086 6.4979C1.00086 5.03927 1.5803 3.64037 2.61171 2.60896C3.64312 1.57755 5.04202 0.99811 6.50065 0.99811C7.95929 0.99811 9.35818 1.57755 10.3896 2.60896C11.421 3.64037 12.0004 5.03927 12.0004 6.4979Z" />
@@ -229,7 +255,7 @@ $stmt->close();
                             </div>
                         </form>
                     </div>
-                    <div class="main d-none d-lg-block">
+                    <div class="main price-slider-main">
                         <div class="price-input-container">
                             <div class="price-input">
                                 <div class="price-field">
@@ -255,129 +281,100 @@ $stmt->close();
                                 value="<?php echo isset($_GET['price_max']) ? $_GET['price_max'] : 0; ?>" step="1">
                         </div>
                     </div>
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileFilterSidebar" aria-labelledby="mobileFilterSidebarLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="mobileFilterSidebarLabel">Filter Products</h5>
-                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <div class="single-widgets style-2 pb-0">
+                        <div class="widget-title" style="margin-bottom:18px !important">
+                            <h5>skin types:</h5>
                         </div>
-                        <div class="offcanvas-body">
-                            <div class="single-widgets style-2">
-                                <div class="widget-title">
-                                    <h5>Skin Types:</h5>
-                                </div>
-                                <p class="wp-block-tag-cloud">
-                                    <?php
-                                    $sql = "SELECT * FROM SkinTypes";
-                                    $stmt = $conn->prepare($sql);
-                                    $stmt->execute();
+                        <p class="wp-block-tag-cloud" style="padding-left:10px;">
+                            <?php
+                            $sql = "SELECT * FROM SkinTypes";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->execute();
 
-                                    $result = $stmt->get_result();
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo '<a href="product-listing.php?skin-type=' . $row['skin_type_name'] . '" class="skin-type-link mb-2">' . htmlspecialchars($row['skin_type_name']) . ',</a>';
-                                    }
-                                    ?>
-                                </p>
-                            </div>
-                            <div class="single-widgets style-2">
-                                <div class="widget-title">
-                                    <h5>Product Types:</h5>
-                                </div>
-                                <p class="wp-block-tag-cloud">
-                                    <?php
-                                    $sql = "SELECT * FROM ProductType";
-                                    $stmt = $conn->prepare($sql);
-                                    $stmt->execute();
-
-                                    $result = $stmt->get_result();
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo '<a href="product-listing.php?type=' . $row['product_type_name'] . '">' . htmlspecialchars($row['product_type_name']) . ',</a>';
-                                    }
-                                    ?>
-                                </p>
-                            </div>
-                        </div>
+                            $result = $stmt->get_result();
+                            while ($row = $result->fetch_assoc()) {
+                                echo '<a href="product-listing.php?skin-type=' . $row['skin_type_id'] . '" style="width:100%;font-size:.9rem;font-family:monospace;margin-bottom:0px !important;" class="skin-type-link mb-2">' . htmlspecialchars($row['skin_type_name']) . '</a>';
+                            }
+                            ?>
+                        </p>
                     </div>
-
-                    <!-- Button to trigger the offcanvas (for mobile/tablet) -->
-                    <button class="btn btn-primary d-lg-none mb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileFilterSidebar" aria-controls="mobileFilterSidebar">
-                        Filter
-                    </button>
-
-
-                    <!-- Desktop Filters (Below Search) -->
-                    <div class="desktop-filter-container d-none d-lg-block">
-                        <div class="single-widgets style-2">
-                            <div class="widget-title">
-                                <h5>Types:</h5>
-                            </div>
-                            <p class="wp-block-tag-cloud ">
-                                <?php
-                                $sql = "SELECT * FROM SkinTypes";
-                                $stmt = $conn->prepare($sql);
-                                $stmt->execute();
-
-                                $result = $stmt->get_result();
-                                while ($row = $result->fetch_assoc()) {
-                                    echo '<a href="product-listing.php?skin-type=' . $row['skin_type_name'] . '" class="skin-type-link mb-2">' . htmlspecialchars($row['skin_type_name']) . ',</a>';
-                                }
-                                ?>
-                            </p>
+                    <div class="single-widgets style-2 pb-0">
+                        <div class="widget-title" style="margin-bottom:18px !important">
+                            <h5>product types:</h5>
                         </div>
-                        <div class="single-widgets style-2">
-                            <div class="widget-title">
-                                <h5>Types:</h5>
-                            </div>
-                            <p class="wp-block-tag-cloud">
-                                <?php
-                                $sql = "SELECT * FROM ProductType"; // Assuming you have a 'Tags' table
-                                $stmt = $conn->prepare($sql);
-                                $stmt->execute();
+                        <p class="wp-block-tag-cloud" style="padding-left:10px;">
+                            <?php
+                            $sql = "SELECT * FROM ProductType"; // Assuming you have a 'Tags' table
+                            $stmt = $conn->prepare($sql);
+                            $stmt->execute();
 
-                                $result = $stmt->get_result();
-                                while ($row = $result->fetch_assoc()) {
-                                    echo '<a href="product-listing.php?type=' . $row['product_type_name'] . '">' . htmlspecialchars($row['product_type_name']) . ',</a>';
-                                }
-                                ?>
-                            </p>
-                        </div>
+                            $result = $stmt->get_result();
+                            while ($row = $result->fetch_assoc()) {
+                                echo '<a  style="width:100%;font-size:.9rem;font-family:monospace;margin-bottom:0px !important;" href="product-listing.php?type=' . $row['product_type_id'] . '">' . htmlspecialchars($row['product_type_name']) . '</a>';
+                            }
+                            ?>
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="col-xl-9 col-lg-8 order-lg-2 order-1">
-                <div class="row gy-5 mb-70">
+                <div class="row gy-5">
                     <?php if (!empty($products)):
                         foreach ($products as $product): ?>
-                            <div class="col-xl-4 col-sm-6 wow animate fadeInDown" data-wow-delay="200ms"
+                            <div class="shop-product-card col-xl-4 col-sm-6 wow animate fadeInDown" data-wow-delay="200ms"
                                 data-wow-duration="1500ms" style="position:relative">
-                                <div style="width: fit-content; color: #fff; position:absolute; top: 0; right: 0; z-index: 1;">
-                                    <div
-                                        style="display: flex; align-items: center; justify-content: center; padding: 8px 12px; border-radius: 12px;">
-                                        <div
-                                            style="font-size: 1rem; font-weight: bold; background-color: lightgrey; padding: 4px 8px; border-radius: 12px; margin: 3px;">
-                                            <p style="margin: 0;">SALE</p>
-                                        </div>
-                                        <div
-                                            style="font-size: 1rem; font-weight: bold; background-color: lightgrey; padding: 4px 8px; border-radius: 12px; margin: 3px;">
-                                            <p style="margin: 0;">12:59:59</p>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="spa-product-card hover-img">
                                     <div class="spa-product-image" style="
     width: 100%;
-    height: 300px;
+    background-image:url('assets/image/skin-care/product_background_image.png')">
+                                        <span class="batch" style="z-index:100">SALE!</span>
+                                        <span class="batch sale-timer" style="z-index:100;left:65px !important;border-radius:100px">12:00:00</span>
+                                        <script>function startAllDynamicCountdowns() {
+    const saleTimerElements = document.querySelectorAll(".sale-timer");
 
-    @media screen and (-webkit-min-device-pixel-ratio:0) and (orientation: portrait),
-    screen and (min-device-width:320px) and (max-device-width: 768px) and (-webkit-min-device-pixel-ratio: 0) {
-      height: 350px;
-     }
+    saleTimerElements.forEach(saleTimerElement => {
 
-   ">
-                                        <a href=" product-details.php">
-                                            <img src="<?php echo isset($product['MainPathImage']) && $product['MainPathImage'] ? 'crm/' . $product['MainPathImage'] : 'assets/image/skin-care/default_product_image.jpg'; ?>"
-                                                alt="Product Image">
-                                            <img src="<?php echo isset($product['MainPathImage']) && $product['MainPathImage'] ? 'crm/' . $product['MainPathImage'] : 'assets/image/skin-care/default_product_image.jpg'; ?>"
-                                                alt="Product Image">
+        let timeLeft;
+        let timerInterval;
+
+        function updateTimer() {
+            const now = new Date();
+            const currentHours = now.getHours();
+            const currentMinutes = now.getMinutes();
+            const currentSeconds = now.getSeconds();
+
+             const currentTimeInSeconds = (currentHours * 60 * 60) + (currentMinutes * 60) + currentSeconds;
+            timeLeft = (24 * 60 * 60) - currentTimeInSeconds;
+
+            if (timeLeft <= 0) {
+                timeLeft +=  (24 * 60 * 60)
+            }
+
+
+            const hours = String(Math.floor(timeLeft / (60 * 60))).padStart(2, '0');
+            const minutes = String(Math.floor((timeLeft % (60 * 60)) / 60)).padStart(2, '0');
+            const seconds = String(Math.floor(timeLeft % 60)).padStart(2, '0');
+
+            saleTimerElement.textContent = `${hours}:${minutes}:${seconds}`;
+            timeLeft -= 1;
+
+        }
+
+          updateTimer();
+         timerInterval = setInterval(updateTimer, 1000);
+
+
+        // Store the interval id and return a clear function.
+       saleTimerElement.stopTimer = () => clearInterval(timerInterval)
+    });
+}
+
+startAllDynamicCountdowns();
+//To stop later use stopTimer() if required
+//setTimeout(() => {document.querySelectorAll('.sale-timer').forEach(el=> el.stopTimer()); console.log('stopped')}, 60000) //To test stop after 1min</script>
+                                        <a href="product-details.php">
+                                        
+                                            <img src="<?php echo isset($product['MainPathImage']) && $product['MainPathImage'] ? 'crm/' . $product['MainPathImage'] : 'assets/image/skin-care/default_product_image.jpg'; ?>" alt="Product Image">
                                         </a>
                                         <!-- <div class="view-and-cart-area">
                                             <ul>
@@ -402,10 +399,11 @@ $stmt->close();
                                     </div>
                                     <div class="spa-product-content text-center">
 
-                                        <h4><a target="_blank"
+                                        <h4 class="product-card-text product-card-text-margin">
+                                        <a class="product-card-text" target="_blank"
                                                 href="product-details.php?id=<?php echo $product["product_id"] ?>"><?php echo htmlspecialchars($product['product_name']); ?></a>
                                         </h4>
-                                        <span><?php echo round($product["price"] * $exchangeRate, 2) . " " . strtoupper($currencyCode) ?></span>
+                                        <span class="product-card-text"><?php echo round($product["price"] * $exchangeRate, 2) . " " . strtoupper($currencyCode) ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -417,9 +415,6 @@ $stmt->close();
             </div>
         </div>
     </div>
-</div>
-<div class="filter-button mobile-menu-btn">
-    <span>1234</span>
 </div>
 
 <script>
@@ -462,4 +457,4 @@ $stmt->close();
 
 <?php
 include_once("footer.php")
-?>
+    ?>

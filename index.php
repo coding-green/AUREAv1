@@ -90,7 +90,7 @@ include_once('function.php');
         <div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
 
             <?php
-$sql = "SELECT skin_concern_id,concern_name FROM SkinConcerns";
+$sql = "SELECT skin_concern_id,concern_name FROM SkinConcerns LIMIT 11";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
@@ -149,7 +149,7 @@ if ($result->num_rows > 0) {
 
                         $sql = "SELECT p.*, pi.main_image_path as MainPathImage FROM Products p
         LEFT JOIN product_images pi ON p.product_id = pi.product_id
-        WHERE p.status = 'active'";
+        WHERE p.status = 'active' LIMIT 10";
                         $stmt = $conn->prepare($sql);
                         $stmt->execute();
 
@@ -158,7 +158,7 @@ if ($result->num_rows > 0) {
                             ?>
                             <div class="swiper-slide" style="cursor: pointer;">
                                 <div class="product-card-section">
-                                    <div class="product-image" id="product-image-slider"
+                                    <div class="product-image" id="product-image-slider" style="background-image:url('assets/image/skin-care/product_background_image.png');"
                                         onclick='window.location.href="product-details.php?id=<?php echo $row["product_id"]; ?>"'>
                                         <img src="<?php echo isset($row['MainPathImage']) && $row['MainPathImage'] ? 'crm/' . $row['MainPathImage'] : 'assets/image/skin-care/default_product_image.jpg'; ?>" alt="Product Image">
                                     </div>
@@ -269,7 +269,6 @@ if ($result->num_rows > 0) {
                                     <img src="assets/image/skin-care/service-image1.png" alt="">
                                 </a>
                                 <div class="service-content">
-                                    <a href="services01.html">Facials</a>
                                     <h5><a href="services-details.html">FACIALS TREATMENT</a></h5>
                                 </div>
                             </div>
@@ -280,7 +279,6 @@ if ($result->num_rows > 0) {
                                     <img src="assets/image/skin-care/service-image2.png" alt="">
                                 </a>
                                 <div class="service-content">
-                                    <a href="services01.html">Therapy</a>
                                     <h5><a href="services-details.html">Microneedling</a></h5>
                                 </div>
                             </div>
@@ -291,7 +289,6 @@ if ($result->num_rows > 0) {
                                     <img src="assets/image/skin-care/service-image3.png" alt="">
                                 </a>
                                 <div class="service-content">
-                                    <a href="services01.html">Treatments</a>
                                     <h5><a href="services-details.html">Laser Treatments</a></h5>
                                 </div>
                             </div>
@@ -302,7 +299,6 @@ if ($result->num_rows > 0) {
                                     <img src="assets/image/skin-care/service-image4.png" alt="">
                                 </a>
                                 <div class="service-content">
-                                    <a href="services01.html">LED Therapy</a>
                                     <h5><a href="services-details.html">LED Light Therapy</a></h5>
                                 </div>
                             </div>
@@ -313,7 +309,6 @@ if ($result->num_rows > 0) {
                                     <img src="assets/image/skin-care/service-image5.png" alt="">
                                 </a>
                                 <div class="service-content">
-                                    <a href="services01.html">Injectable</a>
                                     <h5><a href="services-details.html">Injectables</a></h5>
                                 </div>
                             </div>
@@ -324,7 +319,6 @@ if ($result->num_rows > 0) {
                                     <img src="assets/image/skin-care/service-image6.png" alt="">
                                 </a>
                                 <div class="service-content">
-                                    <a href="services01.html">Therapy</a>
                                     <h5><a href="services-details.html">Body Treatments</a></h5>
                                 </div>
                             </div>
@@ -335,7 +329,6 @@ if ($result->num_rows > 0) {
                                     <img src="assets/image/skin-care/service-image7.png" alt="">
                                 </a>
                                 <div class="service-content">
-                                    <a href="services01.html">Treatments</a>
                                     <h5><a href="services-details.html">Consultations</a></h5>
                                 </div>
                             </div>

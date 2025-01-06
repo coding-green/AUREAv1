@@ -1,7 +1,4 @@
 <?php
-// $page = $_SERVER['PHP_SELF'];
-// $sec = "60";
-
 session_start();
 include_once("config.php");
 if (isset($_SESSION["email"])) {
@@ -28,7 +25,6 @@ if (isset($_SESSION["id"])) {
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="<?php echo $sec?>;URL='<?php echo $page?>'">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- swiper link -->
     <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
@@ -47,10 +43,10 @@ if (isset($_SESSION["id"])) {
     <title>Aurea Bliss</title>
     <link rel="icon" href="assets/image/icon/favi.png" type="image/gif" sizes="20x20">
     <style>
-        #img1,
+       #img1,
         #img2 {
-            width: 200px;
-            height: 200px;
+            width: 50px;
+            height: 50px;
             object-fit: cover;
             position: relative;
             z-index: 100;
@@ -58,14 +54,14 @@ if (isset($_SESSION["id"])) {
 
         .loader {
             position: absolute;
-            border: 8px solid transparent;
-            border-top: 8px solid #F1B968;
+            border: 4px solid transparent;
+            border-top: 4px solid #F1B968;
             border-radius: 50%;
-            width: 192px;
-            height: 192px;
+            width: 55px;
+            height: 55px;
             animation: spin 1s linear infinite;
-            right: 4px;
-            bottom: 4px;
+            right: -3px;
+            bottom: 0px;
             z-index: 10;
         }
 
@@ -75,11 +71,11 @@ if (isset($_SESSION["id"])) {
 
         #loader-overlay {
             position: fixed;
-            width: 200px;
-            height: 200px;
-            left: 40vw;
+            width: 50px;
+            height: 50px;
+            left: 48vw;
             z-index: 1000;
-            top: 40vh;
+            top: 48vh;
         }
 
         @keyframes spin {
@@ -218,81 +214,100 @@ if (isset($_SESSION["id"])) {
                     <!--<li class="active"><a href="index.php">HOME</a></li>-->
                     <li class="menu-item-has-children" class="active"><a class="drop-down" href="#">SHOP</a>
                         <ul class="sub-menu">
-                            <div class="d-flex flex-row">
-                                <li>
-                                    <h5 class="sub-menu-heading">Product Type</h5>
-                                    <?php
-                                    $query = "SELECT * FROM ProductType ORDER by product_type_name";
-                                    $result = mysqli_query($conn, $query);
-                                    while ($row = mysqli_fetch_array($result)) {
-                                        ?>
-                                        <a
-                                            href="product-listing.php?type=<?php echo $row['product_type_id']; ?>">
-                                            <?php echo $row['product_type_name']; ?></a>
-                                        <?php
-                                    }
-                                    ?>
+                            <div class="d-flex flex-row" style="display: flex; flex-direction: row;">
+                                <li style="list-style: none;margin-right: 20px;padding-left: 20px;">
+                                    <h5 class="sub-menu-heading" style="font-size: 1em;font-weight: 600;margin-bottom: 10px;text-transform: uppercase;margin-left: 0;color: #a0cddb;">Product Type</h5>
+                                    <a href="product-listing.php?type=ABPT10012" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Ampoule serum treatment</a>
+                                    <a href="product-listing.php?type=ABPT10005" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Eye care</a>
+                                    <a href="product-listing.php?type=ABPT10011" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Face Scrubs</a>
+                                    <a href="product-listing.php?type=ABPT10010" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Lip care</a>
+                                    <a href="product-listing.php?type=ABPT10007" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Mask</a>
+                                    <a href="product-listing.php?type=ABPT10006" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        UV protection</a>
                                 </li>
-                                <li class="active">
-                                    <h5 class="sub-menu-heading">Skin Concern</h5>
-                                    <?php
-                                    $query = "SELECT * FROM SkinConcerns ORDER BY concern_name";
-                                    $result = mysqli_query($conn, $query);
-                                    while ($row = mysqli_fetch_array($result)) {
-                                        ?>
-                                        <a
-                                            href="product-listing.php?skin_concern=<?php echo $row['skin_concern_id']; ?>">
-                                            <?php echo $row['concern_name']; ?></a>
-                                        <?php
-                                    }
-                                    ?>
+                                <li class="active" style="list-style: none;margin-right: 20px;padding-left: 20px;">
+                                    <h5 class="sub-menu-heading" style="font-size: 1em;font-weight: 600;margin-bottom: 10px;text-transform: uppercase;margin-left: 0;color: #a0cddb;">Skin Concern</h5>
+                                    <a href="product-listing.php?skin_concern=ABSC10001" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Acne & Blemishes</a>
+                                    <a href="product-listing.php?skin_concern=ABSC10013" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Anti-aging</a>
+                                    <a href="product-listing.php?skin_concern=ABSC10012" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Dark Circles</a>
+                                    <a href="product-listing.php?skin_concern=ABSC10003" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Dark spot and pigmentation</a>
+                                    <a href="product-listing.php?skin_concern=ABSC10004" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Dryness & dehydration</a>
+                                    <a href="product-listing.php?skin_concern=ABSC10005" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Dullness or lackluster tone</a>
+                                    <a href="product-listing.php?skin_concern=ABSC10007" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Enlarged pores</a>
+                                    <a href="product-listing.php?skin_concern=ABSC10011" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Keratosis pilaris or small bumps</a>
+                                    <a href="product-listing.php?skin_concern=ABSC10008" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Redness or rosacea</a>
+                                    <a href="product-listing.php?skin_concern=ABSC10009" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Signs of congestion</a>
+                                    <a href="product-listing.php?skin_concern=ABSC10006" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Textural irregularities</a>
+                                    <a href="product-listing.php?skin_concern=ABSC10010" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Uneven skin tone</a>
                                 </li>
-                                <li>
-                                    <h5 class="sub-menu-heading">Skin Type</h5>
-                                    <?php
-                                    $query = "SELECT * FROM SkinTypes ORDER BY skin_type_name";
-                                    $result = mysqli_query($conn, $query);
-                                    while ($row = mysqli_fetch_array($result)) {
-                                        ?>
-                                        <a href="product-listing.php?skin_type=<?php echo $row['skin_type_id']; ?>">
-                                            <?php echo $row['skin_type_name']; ?></a>
-                                        <?php
-                                    }
-                                    ?>
+                                <li style="list-style: none;margin-right: 20px;padding-left: 20px;">
+                                    <h5 class="sub-menu-heading" style="font-size: 1em;font-weight: 600;margin-bottom: 10px;text-transform: uppercase;margin-left: 0;color: #a0cddb;">Skin Type</h5>
+                                    <a href="product-listing.php?skin_type=ABST10006" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        All Skin Types</a>
+                                    <a href="product-listing.php?skin_type=ABST10002" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Combination Skin</a>
+                                    <a href="product-listing.php?skin_type=ABST10007" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Dry Skin </a>
+                                    <a href="product-listing.php?skin_type=ABST10004" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Normal Skin</a>
+                                    <a href="product-listing.php?skin_type=ABST10003" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Oily Skin</a>
+                                    <a href="product-listing.php?skin_type=ABST10005" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                        Sensitive Skin</a>
                                 </li>
-                                <li>
-                                    <h5 class="sub-menu-heading">Popular Brands</h5>
-                                    <?php
-                                    $query = "SELECT * FROM Brands ORDER by brands_name";
-                                    $result = mysqli_query($conn, $query);
-                                    ?>
-                                    <div class="product-type-columns">
-                                        <?php
-                                        while ($row = mysqli_fetch_array($result)) {
-                                            ?>
-                                            <a href="product-listing.php?brand=<?php echo $row['brands_id']; ?>">
-                                                <?php echo $row['brands_name']; ?>
-                                            </a>
-                                            <?php
-                                        }
-                                        ?>
+                                <li style="list-style: none;margin-right: 20px;padding-left: 20px;">
+                                    <h5 class="sub-menu-heading" style="font-size: 1em;font-weight: 600;margin-bottom: 10px;text-transform: uppercase;margin-left: 0;color: #a0cddb;">Popular Brands</h5>
+                                    <div class="product-type-columns" style="display: flex; flex-direction: column;">
+                                        <a href="product-listing.php?brand=ABB10018" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                            CeraVe</a>
+                                        <a href="product-listing.php?brand=ABB10027" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                            Drunk Elephant</a>
+                                        <a href="product-listing.php?brand=ABB10020" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                            Estee Lauder</a>
+                                        <a href="product-listing.php?brand=ABB10025" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                            Beauty of Joseon</a>
+                                        <a href="product-listing.php?brand=ABB10003" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                            Garnier</a>
+                                        <a href="product-listing.php?brand=ABB10037" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                            Nars</a>
+                                        <a href="product-listing.php?brand=ABB10021" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                            Neutrogena</a>
+                                        <a href="product-listing.php?brand=ABB10022" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                            SKIN1004 - Madagascar Centella</a><a href="product-listing.php?brand=ABB10013" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                            The ordinary</a><a href="product-listing.php?brand=ABB10024" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">
+                                            Pixi</a>
                                     </div>
                                 </li>
-                                <li>
-                                    <h5 class="sub-menu-heading">Aurea collection</h5>
-                                    <a href="product-listing.php?brands_id=1">Gift sets</a>
-                                    <a href="product-listing.php?brands_id=2">Gift cards</a>
-                                    <a href="product-listing.php?brands_id=3">Regimen sets</a>
-                                    <a href="product-listing.php?brands_id=4">Bestsellers</a>
+                                <li style="list-style: none;margin-right: 20px;padding-left: 20px;">
+                                    <h5 class="sub-menu-heading" style="font-size: 1em;font-weight: 600;margin-bottom: 10px;text-transform: uppercase;margin-left: 0;color: #a0cddb;">Aurea collection</h5>
+                                    <a href="product-listing.php?brands_id=1" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">Gift sets</a>
+                                    <a href="product-listing.php?brands_id=2" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">Gift cards</a>
+                                    <a href="product-listing.php?brands_id=3" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">Regimen sets</a>
+                                    <a href="product-listing.php?brands_id=4" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">Bestsellers</a>
                                 </li>
-
-                                <li>
-                                    <h5 class="sub-menu-heading">Beauty tools</h5>
-                                    <a href="product-listing.php?brands_id=2">Body Care</a>
-                                    <a href="product-listing.php?brands_id=1">Face Care</a>
-                                    <a href="product-listing.php?brands_id=3">Hair Care</a>
+                                <li style="list-style: none;">
+                                    <h5 class="sub-menu-heading" style="font-size: 1em;font-weight: 600;margin-bottom: 10px;text-transform: uppercase;margin-left: 0;color: #a0cddb;">Beauty tools</h5>
+                                    <a href="product-listing.php?brands_id=2" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">Body Care</a>
+                                    <a href="product-listing.php?brands_id=1" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">Face Care</a>
+                                    <a href="product-listing.php?brands_id=3" style="display: block;text-decoration: none;color: #f8f9fa;padding: 5px 0;transition: color 0.3s ease;white-space: nowrap;font-size: .7em;letter-spacing: .01em;">Hair Care</a>
                                 </li>
-
                             </div>
                         </ul>
                     </li>

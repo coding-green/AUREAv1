@@ -4,7 +4,7 @@ include '../config.php'; // Ensure this file correctly sets up the $pdo variable
 session_start();
 
 // Check if the user is already logged in
-if (isset($_SESSION['user_email'])) {
+if (isset($_SESSION['email'])) {
     header('Location: ../index.php');
     exit;
 }

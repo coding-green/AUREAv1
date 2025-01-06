@@ -25,11 +25,11 @@ function getCurrencyExchangeRates()
 
     return $decodedData['usd'];
 }
-// $ip = getClientIP();
-// if (!$ip) {
-//     $ip = "178.238.11.6";
-// }
-$ip = "125.22.51.250";
+$ip = getClientIP();
+if (!$ip) {
+    $ip = "178.238.11.6";
+}
+// $ip = "125.22.51.250";
 // $ip = "178.238.11.6";
 
 $country = getCountryFromIP($ip);

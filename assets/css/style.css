@@ -7959,7 +7959,7 @@ header.nail.booking.sticky {
 }
 
 .shop-sidebar .single-widgets {
-  padding: 40px 30px;
+  padding: 20px 30px;
   background-color: #F8F8F8;
 }
 @media (max-width: 1399px) {
@@ -8338,6 +8338,8 @@ header.nail.booking.sticky {
   overflow: hidden;
   float: left;
   cursor: zoom-in;
+  background-image: url('../image/skin-care/product_background_image.png');
+  margin-top: 20px;
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .product-details-page .product-img-wrap .product-img {
@@ -8387,8 +8389,10 @@ header.nail.booking.sticky {
 }
 .product-details-page .product-details-content.style-2 .product-info-list li {
 
-  font-weight: 400;
+font-weight: 400;
     letter-spacing: 0.4px;
+    color: #575757;
+
 }
 .product-details-page .product-details-content.style-2 .product-info-list li span {
   font-family: var(--font-eb-garamond);
@@ -8472,7 +8476,7 @@ header.nail.booking.sticky {
   align-items: center;
   gap: 24px;
   flex-wrap: wrap;
-  margin-bottom: 55px;
+  margin-bottom: 15px;
 }
 @media (max-width: 991px) {
   .product-details-page .product-details-content .quantity-bag {
@@ -17405,6 +17409,34 @@ input[type="range"]::-webkit-slider-thumb {
   }
   .footer-top-section ul{
     margin-left: 0px !important;
+  }
+  .skin-care-breadcrumb-section{
+      display: none;
+  }
+  .mobile-shop-menu{
+      position: static !important;
+      order: 1 !important;
+  }
+  .product-page .container > .row {
+      flex-wrap: wrap;
+  }
+  .shop-product-card{
+      width: 50%;
+  }
+  .spa-product-card .spa-product-image .batch{
+      top: 10px;
+  }
+  .shop-product-card .product-card-text{
+      font-size: 16px !important;
+  }
+  .shop-product-card .product-card-text-margin{
+      margin: -8px 0 3px 0;
+  }
+  .price-input{
+      flex-direction: row !important;
+  }
+  .price-slider-main{
+      width: 100% !important;
   }
 }
 

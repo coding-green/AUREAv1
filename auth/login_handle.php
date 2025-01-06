@@ -4,7 +4,7 @@ include './config.php';
 session_start();
 
 // Check if the user is already logged in
-if (isset($_SESSION['user_email'])) {
+if (isset($_SESSION['email'])) {
     header('Location: ../index.php');
     exit;
 }
@@ -29,8 +29,8 @@ function validateUser($inputEmail, $inputPassword, $pdo)
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($inputPassword, $user['user_password'])) {
-            $_SESSION['user_email'] = $user['user_email'];
-            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['email'] = $user['user_email'];
+            $_SESSION['id'] = $user['user_id'];
             return true; // Valid credentials
         }
     } catch (Exception $e) {
