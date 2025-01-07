@@ -55,7 +55,7 @@ if (isset($_GET['id'])) {
         <div class="row g-lg-4 gy-5 mb-70">
             <div class="col-xl-5 col-lg-6" style="position:sticky;top:100px;height:fit-content;">
                 <div class="product-img-wrap">
-                    <div class="swiper product-image-slider">
+                    <div class="swiper product-image-slider mySwiper2">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide" style="display:flex;justify-content:center">
                                 <div class="product-img product-img--main" data-scale="1.4"
@@ -65,9 +65,38 @@ if (isset($_GET['id'])) {
                                 </div>
                             </div>
                         </div>
+                        <div class="swiper-button-next" style="color: #000000ad;"></div>
+                        <div class="swiper-button-prev" style="color: #000000ad;"></div>
+                        <div thumbsSlider="" class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img style="height: 60px;background-color: #becacd;" src="<?php echo isset($product['MainPathImage']) && $product['MainPathImage'] ? 'crm/' . $product['MainPathImage'] : 'https://placehold.co/450x450'; ?>">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <script>
+                var swiper = new Swiper(".mySwiper", {
+                    loop: true,
+                    spaceBetween: 10,
+                    slidesPerView: 3,
+                    freeMode: true,
+                    watchSlidesProgress: true,
+                });
+                var swiper2 = new Swiper(".mySwiper2", {
+                    loop: true,
+                    spaceBetween: 10,
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    thumbs: {
+                        swiper: swiper,
+                    },
+                });
+            </script>
             <div class="col-xl-7 col-lg-6">
 
                 <div class="product-details-content style-2" style="
@@ -204,7 +233,7 @@ if (isset($_GET['id'])) {
                             <a id="add-to-cart" class="primary-btn1"
                                 style='background-color:lightgrey;border:none;border-radius:10px;'>ADD TO CART</a>
                             <script>
-                                document.querySelector('#add-to-cart').addEventListener('click', function (e) {
+                                document.querySelector('#add-to-cart').addEventListener('click', function(e) {
                                     e.preventDefault();
 
                                     var qty = document.querySelector('.quantity__input').value;
@@ -218,12 +247,12 @@ if (isset($_GET['id'])) {
                             </script>
                         </div>
                         <?php if (isset($product['product_benefits'])) {
-                            ?>
+                        ?>
                             <h3 style="font-size: 24px;">Benefits: </h3>
                             <li><?php echo $product['product_benefits']; ?></li>
                         <?php } ?>
                         <?php if (isset($product['how_to_use'])) {
-                            ?>
+                        ?>
                             <h3 style="font-size: 24px;">How to Use: </h3>
                             <li><?php echo $product['product_benefits']; ?></li>
                         <?php } ?>
@@ -406,9 +435,9 @@ if (isset($_GET['id'])) {
                         $result = $stmt->get_result();
                         $slideIndex = 1; // Initialize slide counter
                         $totalSlides = $result->num_rows; // Get total number of slides
-                        
+
                         while ($row = $result->fetch_assoc()) {
-                            ?>
+                        ?>
                             <div class="swiper-slide" role="group"
                                 aria-label="<?php echo $slideIndex . ' / ' . $totalSlides; ?>"
                                 data-swiper-slide-index="<?php echo $slideIndex - 1; ?>"
@@ -416,7 +445,7 @@ if (isset($_GET['id'])) {
                                 <iframe src="<?php echo $row['reel_url'] ?>/embed" width="400" height="560" frameborder="0"
                                     scrolling="no" allowtransparency="true" allow="autoplay; fullscreen"></iframe>
                             </div>
-                            <?php
+                        <?php
                             $slideIndex++; // Increment slide counter
                         }
                         ?>
@@ -553,7 +582,7 @@ $result = $stmt->get_result();
 
 // Check if there are any related products
 if ($result->num_rows > 0) {
-    ?>
+?>
     <div class="related-product mb-30">
         <div class="container">
             <div class="row">
@@ -571,7 +600,7 @@ if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 // Use a default image if main_image_path is NULL or empty
                                 $imagePath = !empty($row['MainPathImage']) ? "crm/" . $row['MainPathImage'] : "assets/image/skin-care/default_product_image.jpg";
-                                ?>
+                            ?>
                                 <div class="swiper-slide border">
                                     <div class="spa-product-card hover-img">
                                         <div class="spa-product-image">
@@ -590,7 +619,7 @@ if ($result->num_rows > 0) {
                                         </div>
                                     </div>
                                 </div>
-                                <?php
+                            <?php
                             }
                             ?>
                         </div>
@@ -618,7 +647,7 @@ if ($result->num_rows > 0) {
             </div>
         </div>
     </div>
-    <?php
+<?php
 }
 
 $stmt->close();
@@ -628,4 +657,4 @@ $stmt->close();
 
 <?php
 include_once("footer.php")
-    ?>
+?>

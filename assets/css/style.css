@@ -17324,6 +17324,26 @@ input[type="range"]::-webkit-slider-thumb {
   padding-top: 3.5rem !important;
 }
 
+.mySwiper2 {
+  height: 80%;
+  width: 100%;
+}
+
+.mySwiper {
+  height: 15%;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.mySwiper .swiper-slide {
+  width: 25%;
+  height: 100%;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
 @media screen and (max-width: 480px) {
   .skin-care-banner-section .swiper-wrapper{
     min-height: fit-content;
