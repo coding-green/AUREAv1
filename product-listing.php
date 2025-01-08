@@ -293,7 +293,7 @@ $stmt->close();
 
                             $result = $stmt->get_result();
                             while ($row = $result->fetch_assoc()) {
-                                echo '<a href="product-listing.php?skin-type=' . $row['skin_type_id'] . '" style="width:100%;font-size:.9rem;font-family:monospace;margin-bottom:0px !important;" class="skin-type-link mb-2">' . htmlspecialchars($row['skin_type_name']) . '</a>';
+                                echo '<a href="product-listing.php?skin-type=' . $row['skin_type_id'] . '" style="width:100%;font-size:.9rem;font-family:"Roboto";margin-bottom:0px !important;" class="skin-type-link mb-2">' . htmlspecialchars($row['skin_type_name']) . '</a>';
                             }
                             ?>
                         </p>
@@ -310,7 +310,7 @@ $stmt->close();
 
                             $result = $stmt->get_result();
                             while ($row = $result->fetch_assoc()) {
-                                echo '<a  style="width:100%;font-size:.9rem;font-family:monospace;margin-bottom:0px !important;" href="product-listing.php?type=' . $row['product_type_id'] . '">' . htmlspecialchars($row['product_type_name']) . '</a>';
+                                echo '<a  style="width:100%;font-size:.9rem;font-family:"Roboto";margin-bottom:0px !important;" href="product-listing.php?type=' . $row['product_type_id'] . '">' . htmlspecialchars($row['product_type_name']) . '</a>';
                             }
                             ?>
                         </p>
@@ -403,7 +403,11 @@ startAllDynamicCountdowns();
                                         <a class="product-card-text" target="_blank"
                                                 href="product-details.php?id=<?php echo $product["product_id"] ?>"><?php echo htmlspecialchars($product['product_name']); ?></a>
                                         </h4>
-                                        <span class="product-card-text"><?php echo round($product["price"] * $exchangeRate, 2) . " " . strtoupper($currencyCode) ?></span>
+                                        <span class="product-card-text"><?php if (strtolower($currencyCode) === 'inr') {
+    $formattedPrice = round($product["price"] * $exchangeRate); // Round to an integer for INR
+} else {
+    $formattedPrice = round($product["price"] * $exchangeRate, 2); // Keep 2 decimal places for other currencies
+};echo  strtoupper($currencySymbol) . " " . $formattedPrice ?></span>
                                     </div>
                                 </div>
                             </div>

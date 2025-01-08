@@ -6,8 +6,8 @@ include_once("header.php");
 include_once("config.php");
 include_once("function.php");
 
-if (isset($_GET['id'], $_GET['qty']) && isset($_SESSION['id'])) {
-    $user_id = $_SESSION['id'];
+if (isset($_GET['id'], $_GET['qty']) && isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
     $id = $_GET['id'];
     $qty = $_GET['qty'];
     $ip_addr = $_SERVER['REMOTE_ADDR'];

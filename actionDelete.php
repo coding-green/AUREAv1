@@ -5,9 +5,9 @@ header('Content-Type: application/json');
 
 $data = json_decode(file_get_contents('php://input'), true);
 
-if (isset($data['product_id'], $_SESSION['id'])) {
+if (isset($data['product_id'], $_SESSION['user_id'])) {
     $product_id = $data['product_id'];
-    $user_id = $_SESSION['id'];
+    $user_id = $_SESSION['user_id'];
 
     $query = "DELETE FROM cart WHERE product_id = ? AND user_id = ?";
     if ($stmt = $conn->prepare($query)) {

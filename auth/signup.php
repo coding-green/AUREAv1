@@ -2,7 +2,7 @@
 session_start();
 
 // Check if the user is already logged in
-if (isset($_SESSION['email'])) {
+if (isset($_SESSION['user_email'])) {
     header('Location: ../index.php');
     exit;
 }

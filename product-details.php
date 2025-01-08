@@ -53,7 +53,7 @@ if (isset($_GET['id'])) {
 <div class="product-details-page pt-10 mb-50">
     <div class="container">
         <div class="row g-lg-4 gy-5 mb-70">
-            <div class="col-xl-5 col-lg-6" style="position:sticky;top:100px;height:fit-content;">
+            <div class="col-xl-5 col-lg-6 mobile-productPage-image" style="position:sticky;top:100px;height:fit-content;">
                 <div class="product-img-wrap">
                     <div class="swiper product-image-slider mySwiper2">
                         <div class="swiper-wrapper">
@@ -192,7 +192,7 @@ if (isset($_GET['id'])) {
                             padding: 5px 10px;
                             margin: 5px 0;
                             color: #333333;
-                            font-family: Arial, sans-serif;
+                            font-family: "Roboto", sans-serif;
                             font-size: 14px;
                             font-weight: 500;
                             margin-right: 5px;
@@ -212,12 +212,16 @@ if (isset($_GET['id'])) {
                     <!--<p style="margin-top:20px"><?php echo $productDescription; ?></p>-->
                     <ul class="product-info-list" style="margin: 10px 0px;">
                         <li>Product Type : <a
-                                href="product-listing.php?type=<?php echo $product['product_type_name'] ?>"><?php echo $product['product_type_name'] ?></a>
+                                href="product-listing.php?type=<?php echo $product['product_type'] ?>"><?php echo $product['product_type_name'] ?></a>
                         </li>
-                        <span class="price"
+    <span class="price"
                             style="margin-bottom: 5px;
     font-size: 36px;
-    -webkit-text-stroke: .5px black;"><?php echo round($price * $exchangeRate, 2) . " " . strtoupper($currencyCode); ?></span>
+    -webkit-text-stroke: .5px black;"><?php if (strtolower($currencyCode) === 'inr') {
+    $formattedPrice = round($product["price"] * $exchangeRate); // Round to an integer for INR
+} else {
+    $formattedPrice = round($product["price"] * $exchangeRate, 2); // Keep 2 decimal places for other currencies
+};echo  strtoupper($currencySymbol) . " " . $formattedPrice ?></span>
                         <li>Size: <?php echo $product['size']; ?></li>
                         <div class="quantity-bag">
                             <div class="quantity-counter" style="border-radius:10px;background-color:lightgrey;">
@@ -233,7 +237,7 @@ if (isset($_GET['id'])) {
                             <a id="add-to-cart" class="primary-btn1"
                                 style='background-color:lightgrey;border:none;border-radius:10px;'>ADD TO CART</a>
                             <script>
-                                document.querySelector('#add-to-cart').addEventListener('click', function(e) {
+                                document.querySelector('#add-to-cart').addEventListener('click', function (e) {
                                     e.preventDefault();
 
                                     var qty = document.querySelector('.quantity__input').value;
@@ -247,12 +251,12 @@ if (isset($_GET['id'])) {
                             </script>
                         </div>
                         <?php if (isset($product['product_benefits'])) {
-                        ?>
+                            ?>
                             <h3 style="font-size: 24px;">Benefits: </h3>
                             <li><?php echo $product['product_benefits']; ?></li>
                         <?php } ?>
                         <?php if (isset($product['how_to_use'])) {
-                        ?>
+                            ?>
                             <h3 style="font-size: 24px;">How to Use: </h3>
                             <li><?php echo $product['product_benefits']; ?></li>
                         <?php } ?>
@@ -435,9 +439,9 @@ if (isset($_GET['id'])) {
                         $result = $stmt->get_result();
                         $slideIndex = 1; // Initialize slide counter
                         $totalSlides = $result->num_rows; // Get total number of slides
-
+                        
                         while ($row = $result->fetch_assoc()) {
-                        ?>
+                            ?>
                             <div class="swiper-slide" role="group"
                                 aria-label="<?php echo $slideIndex . ' / ' . $totalSlides; ?>"
                                 data-swiper-slide-index="<?php echo $slideIndex - 1; ?>"
@@ -445,7 +449,7 @@ if (isset($_GET['id'])) {
                                 <iframe src="<?php echo $row['reel_url'] ?>/embed" width="400" height="560" frameborder="0"
                                     scrolling="no" allowtransparency="true" allow="autoplay; fullscreen"></iframe>
                             </div>
-                        <?php
+                            <?php
                             $slideIndex++; // Increment slide counter
                         }
                         ?>
@@ -582,7 +586,7 @@ $result = $stmt->get_result();
 
 // Check if there are any related products
 if ($result->num_rows > 0) {
-?>
+    ?>
     <div class="related-product mb-30">
         <div class="container">
             <div class="row">
@@ -600,7 +604,7 @@ if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 // Use a default image if main_image_path is NULL or empty
                                 $imagePath = !empty($row['MainPathImage']) ? "crm/" . $row['MainPathImage'] : "assets/image/skin-care/default_product_image.jpg";
-                            ?>
+                                ?>
                                 <div class="swiper-slide border">
                                     <div class="spa-product-card hover-img">
                                         <div class="spa-product-image">
@@ -619,7 +623,7 @@ if ($result->num_rows > 0) {
                                         </div>
                                     </div>
                                 </div>
-                            <?php
+                                <?php
                             }
                             ?>
                         </div>
@@ -647,7 +651,7 @@ if ($result->num_rows > 0) {
             </div>
         </div>
     </div>
-<?php
+    <?php
 }
 
 $stmt->close();
@@ -657,4 +661,4 @@ $stmt->close();
 
 <?php
 include_once("footer.php")
-?>
+    ?>

@@ -34,6 +34,14 @@
         table, th, td {
             border: 1px solid black !important;
         }
+        @media screen and (max-width: 480px){
+            h1{
+                font-size:2rem !important;
+            }
+            p{
+                font-size:14px !important;
+            }
+        }
 
     </style>
 </head>

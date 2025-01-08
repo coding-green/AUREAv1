@@ -1,6 +1,5 @@
 <?php include('header.php'); ?>
-<body >
-<div style=" background-color: #fff; color: #000; font-family: 'Arial', sans-serif; font-size: 16px; line-height: 1.6; margin: 0 300px; padding: 50px 0;">
+<div class="container" style=" background-color: #fff; color: #000; font-family: 'Arial', sans-serif; font-size: 16px; line-height: 1.6; padding: 50px 20px;">
     
 <h1>Terms of Service</h1>
 <h2 style="font-size:16px; font-weight:600;">OVERVIEW</h2>

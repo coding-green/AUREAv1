@@ -39,8 +39,15 @@ $currencyCodes = [
     'GB' => 'gbp',
     'CA' => 'cad'
 ];
+$currencySymbols = [
+    'usd' => '$',
+    'inr' => '₹',
+    'gbp' => '£',
+    'cad' => 'CAD$'
+];
 $currencyCode = isset($currencyCodes[$country]) ? $currencyCodes[$country] : 'USD';
 $exchangeRates = getCurrencyExchangeRates();
 $exchangeRate = isset($exchangeRates[$currencyCode]) ? $exchangeRates[$currencyCode] : 1;
 $priceInUSD = 10;
 $roundedceilvalue = round($exchangeRate * 100);
+$currencySymbol = isset($currencySymbols[strtolower($currencyCode)]) ? $currencySymbols[strtolower($currencyCode)] : '$';

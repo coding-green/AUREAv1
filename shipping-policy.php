@@ -1,14 +1,14 @@
 <?php 
 include_once("header.php");
 ?>
-<div style="max-width:900px;margin:auto;padding:50px 0px">
-    <h1>World Beauty Care Shipping Policy</h1>
+<div style="max-width:900px;margin:auto;padding:50px 20px">
+    <h1>Aureabliss Shipping Policy</h1>
     <hr>
 
     <div class="section">
         <h2>Shipping Information</h2>
         <p>
-            World Beauty Care ships its products to almost all parts of India. Orders placed will be shipped within 24-48* hrs. We ship on all days except Sunday and National Holidays.
+            Aureabliss ships its products to almost all parts of India. Orders placed will be shipped within 24-48* hrs. We ship on all days except Sunday and National Holidays.
         </p>
         <p><small>* Valid only for owned stock. Shipping time may increase for third party shipments.</small></p>
     </div>
@@ -22,10 +22,10 @@ include_once("header.php");
             These shipping charges are not refundable in the case of return/ cancellation of the product or the order.
         </p>
         <p>
-            The shipping charges can be modified by World Beauty Care at any point without prior intimation. The new charges would reflect on the product page as well as in the checkout flow.
+            The shipping charges can be modified by Aureabliss at any point without prior intimation. The new charges would reflect on the product page as well as in the checkout flow.
         </p>
         <p>
-          Every once in a while, World Beauty Care brings out various offers in an attempt to satisfy customers. Various offers could be introduced for a limited span of time that enable free shipping of goods, subject to the fulfilment of the terms and conditions attached to the offer.
+          Every once in a while, Aureabliss brings out various offers in an attempt to satisfy customers. Various offers could be introduced for a limited span of time that enable free shipping of goods, subject to the fulfilment of the terms and conditions attached to the offer.
         </p>
     </div>
 
@@ -35,7 +35,7 @@ include_once("header.php");
             For all areas serviced by reputed couriers, the delivery time would be within 3 to 4 business days of shipping (business days exclude Sundays and other holidays). However, items weighing over 2 kilos or high volume may take a couple of days longer to reach. For other areas the products may take 5-7 days depending on location.
         </p>
         <p>
-            World Beauty Care ensures to provide a delightful customer experience by delivering the products as per the Estimated Delivery Date communicated as above, however, at times there might be unexpected delays in the delivery of your order due to unavoidable and undetermined logistics challenges beyond our control for which World Beauty Care is not liable and would request its users to cooperate as Beauty Nest continuously tries to naught such instances. Also, World Beauty Care reserves the right to cancel your order at its sole discretion in cases where it takes longer than usual delivery time or the shipment is physically untraceable and refund the amount paid for cancelled product(s) to the customer.
+            Aureabliss ensures to provide a delightful customer experience by delivering the products as per the Estimated Delivery Date communicated as above, however, at times there might be unexpected delays in the delivery of your order due to unavoidable and undetermined logistics challenges beyond our control for which Aureabliss is not liable and would request its users to cooperate as Beauty Nest continuously tries to naught such instances. Also, Aureabliss reserves the right to cancel your order at its sole discretion in cases where it takes longer than usual delivery time or the shipment is physically untraceable and refund the amount paid for cancelled product(s) to the customer.
         </p>
     </div>
 

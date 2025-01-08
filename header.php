@@ -1,13 +1,13 @@
 <?php
 session_start();
 include_once("config.php");
-if (isset($_SESSION["email"])) {
+if (isset($_SESSION["user_email"])) {
     $link = "onclick = \"window.location.href='auth/account'\"";
 } else {
     $link = 'data-bs-target="#popup-auth-product-view"';
 }
-if (isset($_SESSION["id"])) {
-    $id = $_SESSION["id"];
+if (isset($_SESSION["user_id"])) {
+    $id = $_SESSION["user_id"];
     $query = "SELECT COUNT(*) as cart_count FROM cart WHERE user_id = ?";
 
     if ($stmt = $conn->prepare($query)) {
@@ -38,8 +38,15 @@ if (isset($_SESSION["id"])) {
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!-- boxicon link -->
     <link rel="stylesheet" href="assets/css/boxicons.min.css">
+    <!--fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <!-- My css link -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- TrustBox script -->
+<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+<!-- End TrustBox script -->
     <title>Aurea Bliss</title>
     <link rel="icon" href="assets/image/icon/favi.png" type="image/gif" sizes="20x20">
     <style>
@@ -315,7 +322,7 @@ if (isset($_SESSION["id"])) {
                     <li><a href="product-listing.php">SALES</a></li>
                     <li><a href="why-we-are-different.php">WHY WE ARE DIFFERENT</a></li>
                     <li><a href="faq.php">FAQ</a></li>
-                    <li><a href="auth/account">SKIN ANALYSIS</a></li>
+                    <li><a href="skin_concern.php">SKIN ANALYSIS</a></li>
                 </ul>
                 <div class="d-xl-none d-block">
                     <div class="mobile-search-area mb-30">
@@ -385,7 +392,7 @@ if (isset($_SESSION["id"])) {
                                     stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
-                            <span><?php if (isset($_SESSION['id'])) {
+                            <span><?php if (isset($_SESSION['user_id'])) {
                                 echo $cart_count;
                             } else {
                                 echo 0;

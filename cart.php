@@ -5,8 +5,8 @@ error_reporting(E_ALL);
 include_once("header.php");
 include_once("config.php");
 include_once("function.php");
-if (isset($_SESSION['id'])) {
-    $user_id = $_SESSION['id'];
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
 
     $query = "
         SELECT 
@@ -192,7 +192,10 @@ if (isset($_SESSION['id'])) {
                                 </strong>
                             </li>
                         </ul>
-                        <a href="checkout.php" class="primary-btn1 mt-40">
+                        <a href="checkout.php" class="primary-btn1 mt-40" style="
+    border: 1px solid var(--primary-color);
+    background-color: transparent;
+">
                             Processed Checkout
                             <svg class="arrow" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1 9L9 1M9 1C7.22222 1.33333 3.33333 2 1 1M9 1C8.66667 2.66667 8 6.33333 9 9" stroke="#1E1E1E" stroke-width="1.5" stroke-linecap="round"></path>
