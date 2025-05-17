@@ -1,1 +1,9 @@
-hello 👋
+<Card
+  image="https://example.com/image.jpg"
+  heading="Awesome Project"
+  author="Jane Doe"
+  date="2025-05-17"
+  techStacks={["React", "Node.js", "MongoDB"]}
+  description="A short description of the project goes here."
+  projectLink="https://github.com/username/project-repo"
+/>
