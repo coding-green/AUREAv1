@@ -1,0 +1,72 @@
+import React from "react";
+
+const Card = ({
+  image,
+  heading,
+  author,
+  date,
+  techStacks = [],
+  description,
+  projectLink,
+}) => (
+  <div style={{
+    border: "1px solid #ddd",
+    borderRadius: "8px",
+    padding: "16px",
+    maxWidth: "350px",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+    background: "#fff"
+  }}>
+    {image && (
+      <img
+        src={image}
+        alt={heading}
+        style={{ width: "100%", borderRadius: "8px 8px 0 0", marginBottom: "12px" }}
+      />
+    )}
+    <h2 style={{ margin: "0 0 8px 0" }}>{heading}</h2>
+    <div style={{ fontSize: "0.9em", color: "#555", marginBottom: "8px" }}>
+      {author} &bull; {date}
+    </div>
+    <div style={{ marginBottom: "8px" }}>
+      {techStacks.map((tech, idx) => (
+        <span
+          key={idx}
+          style={{
+            background: "#e0e7ff",
+            color: "#3730a3",
+            padding: "2px 8px",
+            borderRadius: "12px",
+            fontSize: "0.8em",
+            marginRight: "6px",
+            display: "inline-block",
+          }}
+        >
+          {tech}
+        </span>
+      ))}
+    </div>
+    <p style={{ fontSize: "1em", color: "#333" }}>{description}</p>
+    {projectLink && (
+      <a
+        href={projectLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: "inline-block",
+          marginTop: "12px",
+          padding: "8px 16px",
+          background: "#2563eb",
+          color: "#fff",
+          borderRadius: "4px",
+          textDecoration: "none",
+          fontWeight: "bold",
+        }}
+      >
+        Open Project
+      </a>
+    )}
+  </div>
+);
+
+export default Card;
